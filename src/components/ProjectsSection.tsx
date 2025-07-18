@@ -8,7 +8,7 @@ const projects = [
     name: 'SorrshaBuy',
     description: 'Your premier e-commerce destination for quality products and seamless shopping experiences.',
     link: 'https://sorrshabuy.com',
-    logo: <img src="/BCO-removebg-preview.png" alt="SorrshaBuy Logo" className="h-32 w-auto object-contain" />,
+    logo: <img src="/assets/images/sorrshabuy-logo.png" alt="SorrshaBuy Logo" className="h-32 w-auto object-contain" />,
     bgColor: 'bg-white',
   },
   {
