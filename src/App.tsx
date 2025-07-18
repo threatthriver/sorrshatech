@@ -17,6 +17,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const CompaniesPage = lazy(() => import("@/pages/CompaniesPage"));
 const ContactPage = lazy(() => import("@/pages/ContactPage"));
+const TeamPage = lazy(() => import("@/pages/TeamPage"));
 
 // PageLoading component for suspense fallbacks
 const PageLoading = () => (
@@ -63,6 +64,7 @@ function App() {
                     <Route path="/" element={<Index />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/company" element={<CompaniesPage />} />
+                    <Route path="/team" element={<TeamPage />} />
                     <Route path="/contact" element={<ContactPage />} />
                     <Route path="/waitlist" element={<Waitlist />} />
                     <Route path="*" element={<NotFound />} />
