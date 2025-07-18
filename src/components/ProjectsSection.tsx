@@ -65,18 +65,18 @@ export const ProjectsSection = () => {
 
   return (
     <motion.section
-      className="py-20 bg-white"
+      className="py-16 sm:py-20 bg-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <motion.div className="text-center mb-16" variants={cardVariants}>
-          <h2 className="text-4xl lg:text-5xl text-slate-900 mb-4 font-light">
+        <motion.div className="text-center mb-12 sm:mb-16" variants={cardVariants}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl text-slate-900 mb-4 font-light">
             Our Ventures
           </h2>
-          <p className="text-lg text-slate-500 max-w-2xl mx-auto font-light">
+          <p className="text-md sm:text-lg text-slate-500 max-w-2xl mx-auto font-light">
             Discover our portfolio of innovative companies and solutions, pushing the boundaries of technology.
           </p>
         </motion.div>

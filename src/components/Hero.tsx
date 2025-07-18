@@ -23,16 +23,16 @@ export const Hero = () => {
         variants={containerVariants}
       >
         <motion.h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-light text-slate-900 mb-8 leading-tight"
+          className="text-4xl sm:text-6xl lg:text-7xl font-light text-slate-900 mb-8 leading-tight"
           variants={itemVariants}
         >
-          SorrshaTech
+          Building the Future of Technology
         </motion.h1>
         <motion.p
-          className="text-slate-600 text-xl font-light max-w-2xl mx-auto"
+          className="text-lg sm:text-xl text-slate-600 font-light max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          Pioneering the future of artificial intelligence with innovative and ethical solutions.
+          We craft innovative and user-centric technology solutions that drive progress and empower businesses.
         </motion.p>
       </motion.div>
     </section>

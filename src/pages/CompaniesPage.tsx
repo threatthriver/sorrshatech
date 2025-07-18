@@ -72,7 +72,7 @@ const CompaniesPage = () => {
         <title>Our Team - SorrshaTech</title>
         <meta name="description" content="Meet the talented team behind SorrshaTech, driving innovation and excellence." />
       </Helmet>
-      <div className="bg-slate-50 py-20 sm:py-24 overflow-hidden">
+      <div className="bg-slate-50 py-16 sm:py-24 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             className="text-center mb-16"
@@ -81,14 +81,14 @@ const CompaniesPage = () => {
             variants={sectionVariants}
           >
             <motion.h1
-              className="text-5xl text-slate-900 mb-4"
+              className="text-4xl sm:text-5xl text-slate-900 mb-4"
               style={{ fontFamily: '"Playfair Display", serif', fontWeight: 400 }}
               variants={cardVariants}
             >
               Our Team
             </motion.h1>
             <motion.p
-              className="text-lg text-slate-500 max-w-2xl mx-auto font-light"
+              className="text-md sm:text-lg text-slate-500 max-w-2xl mx-auto font-light"
               variants={cardVariants}
             >
               The driving force behind our innovation and success.

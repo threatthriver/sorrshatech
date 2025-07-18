@@ -32,10 +32,10 @@ export const Footer = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-2 md:col-span-1">
-            <h3 className="text-2xl font-medium text-slate-900 mb-4">SorrshaTech</h3>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+            <h3 className="text-xl sm:text-2xl font-medium text-slate-900 mb-4">SorrshaTech</h3>
             <p className="text-slate-500 text-sm mb-4">
               Empowering businesses with innovative technology solutions.
             </p>

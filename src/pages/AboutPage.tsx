@@ -20,23 +20,23 @@ const AboutPage = () => {
           content="SorrshaTech delivers innovative technology solutions to help businesses thrive in the digital age."
         />
       </Helmet>
-      <section id="about" className="py-24 bg-white overflow-hidden">
+      <section id="about" className="py-16 sm:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.div
-            className="text-center mb-20"
+            className="text-center mb-16 sm:mb-20"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             variants={sectionVariants}
           >
-            <h2 className="text-4xl lg:text-5xl font-light text-slate-900 mb-8">About SorrshaTech</h2>
-            <p className="text-lg text-slate-600 leading-relaxed font-light max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-900 mb-6 sm:mb-8">About SorrshaTech</h2>
+            <p className="text-md sm:text-lg text-slate-600 leading-relaxed font-light max-w-3xl mx-auto">
               SorrshaTech is a dynamic technology company dedicated to delivering innovative solutions that drive business growth and digital transformation.
             </p>
           </motion.div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24"
+            className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12 mb-16 sm:mb-24"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
