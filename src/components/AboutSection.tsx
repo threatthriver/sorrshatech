@@ -1,42 +1,20 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Zap, Code, Cloud } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
-
-const sectionVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      duration: 0.5,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-};
 
 const features = [
   {
-    icon: <Zap className="h-8 w-8 text-indigo-500" />,
+    icon: <Zap className="h-6 w-6 text-gray-700" />,
     title: 'Rapid Prototyping',
     description: 'From idea to interactive prototype in record time, validating concepts with speed and precision.',
   },
   {
-    icon: <Code className="h-8 w-8 text-purple-500" />,
+    icon: <Code className="h-6 w-6 text-gray-700" />,
     title: 'Scalable Development',
     description: 'Building robust, production-ready applications that grow with your business needs.',
   },
   {
-    icon: <Cloud className="h-8 w-8 text-sky-500" />,
+    icon: <Cloud className="h-6 w-6 text-gray-700" />,
     title: 'Cloud Integration',
     description: 'Seamlessly deploying and managing your applications on modern cloud infrastructure.',
   },
@@ -44,58 +22,43 @@ const features = [
 
 export const AboutSection = () => {
   return (
-    <motion.section
-      className="py-24 sm:py-32 bg-gradient-to-b from-indigo-50/50 to-white"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={sectionVariants}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 max-w-6xl">
         <div className="max-w-3xl mx-auto text-center">
-          <motion.h2
-            className="text-base font-semibold leading-7 text-indigo-600"
-            variants={itemVariants}
-          >
+          <h2 className="text-base font-medium text-gray-600">
             Who We Are
-          </motion.h2>
-          <motion.p
-            className="mt-2 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl"
-            variants={itemVariants}
-          >
+          </h2>
+          <h1 className="mt-2 text-3xl font-medium text-gray-900">
             Your Partner in Digital Innovation
-          </motion.p>
-          <motion.p
-            className="mt-6 text-lg leading-8 text-slate-600"
-            variants={itemVariants}
-          >
+          </h1>
+          <p className="mt-4 text-gray-600">
             We are a team of passionate engineers, designers, and strategists dedicated to crafting exceptional digital experiences. Our mission is to transform complex challenges into elegant, scalable solutions.
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div className="mt-20" variants={itemVariants}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature) => (
-              <div key={feature.title} className="text-center p-8 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-white shadow-md mx-auto mb-6">
+              <div key={feature.title} className="p-6 border border-gray-200 rounded-lg">
+                <div className="flex justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold leading-7 text-slate-900">{feature.title}</h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">{feature.description}</p>
+                <h3 className="text-lg font-medium text-gray-900 text-center">{feature.title}</h3>
+                <p className="mt-2 text-gray-600 text-center">{feature.description}</p>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div className="mt-20 text-center" variants={itemVariants}>
-          <Button asChild size="lg">
-            <Link to="/about">
+        <div className="mt-12 text-center">
+          <Button asChild>
+            <Link to="/about" className="rounded-full">
               Learn More About Us
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
