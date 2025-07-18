@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
@@ -150,12 +150,6 @@ export const Navigation = () => {
                       </button>
                     </div>
                   ))}
-                  <div className="pt-4 pb-2 px-3">
-                    <Button onClick={() => window.open("https://app.sorrshatech.com", "_blank")} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-md">
-                      Get Started
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
               </div>
             </motion.div>
