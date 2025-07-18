@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { useEffect } from 'react';
 import { AboutSection } from '@/components/AboutSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
+import { AnimatedSection } from "@/components/AnimatedSection";
 
 const Index = () => {
   useEffect(() => {
@@ -86,8 +87,12 @@ const Index = () => {
       </div>
 
         <Hero />
-        <AboutSection />
-        <ProjectsSection />
+        <AnimatedSection>
+          <AboutSection />
+        </AnimatedSection>
+        <AnimatedSection>
+          <ProjectsSection />
+        </AnimatedSection>
 
     </div>
   );

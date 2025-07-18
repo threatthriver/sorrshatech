@@ -30,8 +30,15 @@ const ErrorFallback = ({
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+      {/* Animated gradient blobs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -right-64 -top-64 w-[800px] h-[800px] bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute -left-64 -bottom-64 w-[800px] h-[800px] bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -right-64 -bottom-32 w-[600px] h-[600px] bg-violet-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="max-w-md w-full bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 text-center relative z-10 border border-white/20">
         <div className="mx-auto w-16 h-16 flex items-center justify-center bg-red-50 rounded-full mb-4">
           <Bug className="w-8 h-8 text-red-600" />
         </div>

@@ -4,7 +4,7 @@
  */
 
 // A generic function type
-type AnyFunction = (...args: never[]) => unknown;
+type AnyFunction = (...args: any[]) => any;
 
 /**
  * Creates a debounced function that delays invoking `func` until after `wait`
@@ -202,8 +202,9 @@ export function measurePerformance<T extends AnyFunction>(
 
     console.log(`${label} took ${(end - start).toFixed(2)}ms`);
 
-    if (result && typeof result.then === 'function') {
-      return result.finally(() => {
+    const promiseResult = result as { then?: Function; finally?: Function };
+        if (promiseResult && typeof promiseResult.then === 'function' && typeof promiseResult.finally === 'function') {
+      return promiseResult.finally(() => {
         console.log(`${label} (async) took ${(performance.now() - start).toFixed(2)}ms`);
       }) as ReturnType<T>;
     }

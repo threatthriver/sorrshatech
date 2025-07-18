@@ -1,0 +1,1 @@
+import{j as t}from"./index-C1p7ojNo.js";const s=()=>t.jsxs("div",{className:"container mx-auto px-4 py-20 text-center",children:[t.jsx("h1",{className:"text-6xl font-bold",children:"404"}),t.jsx("p",{className:"mt-4 text-lg text-gray-400",children:"Page Not Found"})]});export{s as default};

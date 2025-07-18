@@ -8,6 +8,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { HelmetProvider } from "react-helmet-async";
 import { PageLayout } from "@/components/PageLayout";
+import { BackToTopButton } from "@/components/BackToTopButton";
 
 // Lazy load routes for better performance
 const Index = lazy(() => import("@/pages/Index"));
@@ -56,6 +57,7 @@ function App() {
               <Suspense fallback={<PageLoading />}>
                 <Toaster />
                 <Sonner />
+                <BackToTopButton />
                 <Routes>
                   <Route element={<AppLayout />}>
                     <Route path="/" element={<Index />} />

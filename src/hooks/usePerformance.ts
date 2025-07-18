@@ -139,7 +139,7 @@ export function useIdleCallback(
   });
 
   useEffect(() => {
-    const handle = runOnIdle(() => {
+    runOnIdle(() => {
       callbackRef.current();
     });
     // No cleanup needed for our simple runOnIdle implementation
