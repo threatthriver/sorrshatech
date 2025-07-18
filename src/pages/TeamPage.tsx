@@ -40,30 +40,30 @@ export const TeamPage = () => {
   const emergingTalent = teamMembers.filter((member) => member.category === 'emerging');
 
   return (
-    <div className="min-h-screen py-24 sm:py-32 bg-background text-foreground">
+    <div className="min-h-screen bg-background py-20 text-foreground sm:py-24">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Hero Section */}
-        <div className="text-center mb-20">
+        <div className="mb-16 text-center sm:mb-20">
           <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl mb-4">Our Team</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
             The driving force behind our innovation and success.
           </p>
         </div>
 
         {/* Leadership Team */}
         <section className="mb-20">
-          <div className="flex items-center mb-10">
+          <div className="mb-8 flex items-center sm:mb-10">
             <Award className="h-8 w-8 text-primary mr-4" />
-            <h2 className="text-3xl font-serif font-bold">Leadership</h2>
+            <h2 className="font-serif text-2xl font-bold sm:text-3xl">Leadership</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {leadershipTeam.map((member, index) => (
               <div
                 key={index}
-                className="bg-card border border-border/50 rounded-xl p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg"
+                className="rounded-xl border border-border/50 bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg sm:p-8"
               >
                 <div className="flex items-start">
-                  <div className="bg-muted/50 rounded-full h-16 w-16 flex items-center justify-center mr-6 flex-shrink-0">
+                  <div className="mr-4 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-muted/50 sm:h-16 sm:w-16 sm:mr-6">
                     <User className="h-8 w-8 text-muted-foreground" />
                   </div>
                   <div>
@@ -79,18 +79,18 @@ export const TeamPage = () => {
 
         {/* Emerging Talent */}
         <section>
-          <div className="flex items-center mb-10">
+          <div className="mb-8 flex items-center sm:mb-10">
             <Sparkles className="h-8 w-8 text-primary mr-4" />
-            <h2 className="text-3xl font-serif font-bold">Emerging Talent</h2>
+            <h2 className="font-serif text-2xl font-bold sm:text-3xl">Emerging Talent</h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {emergingTalent.map((member, index) => (
               <div
                 key={index}
-                className="bg-card border border-border/50 rounded-xl p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-lg"
+                className="rounded-xl border border-border/50 bg-card p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg sm:p-8"
               >
                 <div className="flex items-start">
-                  <div className="bg-muted/50 rounded-full h-16 w-16 flex items-center justify-center mr-6 flex-shrink-0">
+                  <div className="mr-4 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-muted/50 sm:h-16 sm:w-16 sm:mr-6">
                     <User className="h-8 w-8 text-muted-foreground" />
                   </div>
                   <div>

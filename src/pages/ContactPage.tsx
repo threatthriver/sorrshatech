@@ -6,18 +6,18 @@ import { Label } from '@/components/ui/label';
 
 export const ContactPage = () => {
   return (
-    <div className="min-h-screen py-24 sm:py-32 bg-background text-foreground">
+    <div className="min-h-screen bg-background py-20 text-foreground sm:py-24">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-20">
-          <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl mb-4">Contact Us</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-16 text-center sm:mb-20">
+          <h1 className="mb-4 font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Contact Us</h1>
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
             We're here to help. Get in touch with our team for inquiries, partnerships, or support.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          <div className="bg-card border border-border/50 rounded-xl p-8 lg:p-12">
-            <h2 className="text-3xl font-serif font-bold mb-8">Send us a message</h2>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="rounded-xl border border-border/50 bg-card p-6 sm:p-8 lg:p-12">
+            <h2 className="mb-8 font-serif text-2xl font-bold sm:text-3xl">Send us a message</h2>
             <form className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -37,8 +37,8 @@ export const ContactPage = () => {
             </form>
           </div>
 
-          <div className="space-y-10">
-            <h2 className="text-3xl font-serif font-bold">Our Information</h2>
+          <div className="space-y-8 lg:space-y-10">
+            <h2 className="font-serif text-2xl font-bold sm:text-3xl">Our Information</h2>
             <div className="space-y-8">
               <div className="flex items-start">
                 <div className="flex-shrink-0 h-10 w-10 text-primary bg-primary/10 rounded-lg flex items-center justify-center">

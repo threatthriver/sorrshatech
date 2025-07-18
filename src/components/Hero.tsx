@@ -47,7 +47,7 @@ export const Hero = () => {
           </motion.div>
           
           <motion.h1
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold font-serif text-foreground mb-6 leading-tight tracking-tight"
+            className="font-serif text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6"
             variants={itemVariants}
           >
             Engineering Tomorrow’s
@@ -55,7 +55,7 @@ export const Hero = () => {
           </motion.h1>
           
           <motion.p
-            className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-10"
+            className="max-w-3xl mx-auto text-base text-muted-foreground sm:text-xl md:text-2xl mb-8 md:mb-10"
             variants={itemVariants}
           >
             We design, build, and scale digital solutions that power the world’s leading businesses. From cloud platforms to enterprise apps, we help you engineer the future of technology.

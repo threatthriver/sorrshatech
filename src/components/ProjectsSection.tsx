@@ -41,17 +41,17 @@ export const ProjectsSection = () => {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-background text-foreground">
+    <section className="bg-background py-20 text-foreground sm:py-24">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-12 text-center sm:mb-16"
         >
-          <h2 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl mb-4">Our Ventures</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="mb-4 font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Our Ventures</h2>
+          <p className="mx-auto max-w-3xl text-base text-muted-foreground sm:text-lg">
             Discover our portfolio of innovative companies and solutions, pushing the boundaries of technology.
           </p>
         </motion.div>
@@ -65,7 +65,7 @@ export const ProjectsSection = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={projectVariants}
-              className="group relative bg-card border border-border/50 rounded-2xl p-8 text-center flex flex-col items-center transition-all duration-300 hover:border-primary/50 hover:shadow-lg"
+              className="group relative flex flex-col items-center rounded-2xl border border-border/50 bg-card p-6 text-center transition-all duration-300 hover:border-primary/50 hover:shadow-lg sm:p-8"
             >
               <div className="mb-6 h-16 w-16 bg-primary/10 rounded-full flex items-center justify-center">
                 {venture.icon}

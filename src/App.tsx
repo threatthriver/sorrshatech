@@ -12,7 +12,7 @@ import { BackToTopButton } from "@/components/BackToTopButton";
 
 // Lazy load routes for better performance
 const Index = lazy(() => import("@/pages/Index"));
-const Waitlist = lazy(() => import("@/pages/Waitlist"));
+
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const AboutPage = lazy(() => import("@/pages/AboutPage"));
 const CompaniesPage = lazy(() => import("@/pages/CompaniesPage"));
@@ -66,8 +66,7 @@ function App() {
                     <Route path="/company" element={<CompaniesPage />} />
                     <Route path="/team" element={<TeamPage />} />
                     <Route path="/contact" element={<ContactPage />} />
-                    <Route path="/waitlist" element={<Waitlist />} />
-                    <Route path="*" element={<NotFound />} />
+                      <Route path="*" element={<NotFound />} />
                   </Route>
                 </Routes>
               </Suspense>

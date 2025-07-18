@@ -46,18 +46,18 @@ export const CompaniesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen py-24 sm:py-32 bg-background text-foreground">
+    <div className="min-h-screen bg-background py-20 text-foreground sm:py-24">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-20">
-          <h1 className="text-4xl font-serif font-bold tracking-tight sm:text-5xl mb-4">
+        <div className="mb-16 text-center sm:mb-20">
+          <h1 className="mb-4 font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Our Strategic Partners
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg">
             We collaborate with industry leaders to deliver exceptional solutions and drive mutual growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 sm:mb-20">
           {companies.map((company, index) => (
             <div 
               key={index}
@@ -84,8 +84,8 @@ export const CompaniesPage = () => {
           ))}
         </div>
 
-        <div className="bg-card border border-border/50 rounded-xl p-10 mb-20">
-          <h2 className="text-3xl font-serif font-bold text-center mb-8">
+        <div className="mb-16 rounded-xl border border-border/50 bg-card p-8 sm:p-10 sm:mb-20">
+          <h2 className="mb-8 text-center font-serif text-2xl font-bold sm:text-3xl">
             Partnership Benefits
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 max-w-3xl mx-auto">

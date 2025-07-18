@@ -22,24 +22,24 @@ const features = [
 
 export const AboutSection = () => {
   return (
-    <section className="py-24 sm:py-32 bg-background">
+    <section className="bg-background py-20 sm:py-24">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-base font-semibold leading-7 text-primary">
             Who We Are
           </h2>
-          <h1 className="mt-2 text-4xl font-serif font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mt-2 font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Your Partner in Digital Innovation
           </h1>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          <p className="mt-6 text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8">
             We are a team of passionate engineers, designers, and strategists dedicated to crafting exceptional digital experiences. Our mission is to transform complex challenges into elegant, scalable solutions.
           </p>
         </div>
 
-        <div className="mt-20">
+        <div className="mt-16 sm:mt-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature) => (
-              <div key={feature.title} className="p-8 border border-border/50 rounded-xl bg-background hover:bg-muted/40 transition-colors duration-300">
+              <div key={feature.title} className="rounded-xl border border-border/50 bg-background p-6 transition-colors duration-300 hover:bg-muted/40 sm:p-8">
                 <div className="flex justify-center mb-6">
                   {feature.icon}
                 </div>
@@ -50,7 +50,7 @@ export const AboutSection = () => {
           </div>
         </div>
 
-        <div className="mt-20 text-center">
+        <div className="mt-16 text-center sm:mt-20">
           <Button asChild size="lg" className="rounded-full">
             <Link to="/about">
               Learn More About Us

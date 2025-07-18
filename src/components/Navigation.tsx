@@ -83,7 +83,7 @@ export const Navigation = () => {
       >
         <motion.nav
           className={cn(
-            "relative flex items-center justify-between rounded-full h-16 px-6 text-foreground transition-all duration-300",
+            "relative flex items-center justify-between rounded-full h-16 px-4 sm:px-6 text-foreground transition-all duration-300",
             scrolled
               ? "bg-background/80 backdrop-blur-lg border border-border shadow-sm"
               : "bg-transparent"
@@ -93,30 +93,31 @@ export const Navigation = () => {
         >
           {/* Logo */}
           <button onClick={() => navigate("/")} className="flex items-center space-x-2 group" aria-label="Home">
-            <div className="w-10 h-10 flex items-center justify-center group-hover:rotate-12 transition-transform">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center group-hover:rotate-12 transition-transform">
               <img 
                 src="/favicon/logo.png" 
                 alt="SorrshaTech Logo" 
-                className="h-10 w-auto object-contain"
+                className="h-8 sm:h-10 w-auto object-contain"
               />
             </div>
-            <span className="text-2xl font-serif font-bold tracking-tight text-foreground">
+            <span className="text-xl sm:text-2xl font-serif font-bold tracking-tight text-foreground">
               SorrshaTech
             </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => (
               <Button
                 key={item.name}
                 variant="ghost"
                 onClick={() => handleNavigate(item.href)}
-                className="px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+                className="px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-primary transition-colors"
               >
                 {item.name}
               </Button>
             ))}
+
           </div>
 
           {/* Mobile menu button */}
@@ -143,7 +144,7 @@ export const Navigation = () => {
                     <div key={item.name} className="border-b border-border/50 last:border-0">
                       <button
                         onClick={() => handleNavigate(item.href)}
-                        className="flex items-center w-full text-left px-3 py-3 text-base font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors"
+                        className="flex items-center w-full text-left px-4 py-3 text-lg font-medium text-foreground hover:bg-primary/10 rounded-lg transition-colors"
                       >
                         {item.name}
                       </button>

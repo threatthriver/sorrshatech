@@ -1,17 +1,17 @@
 const Footer = () => {
   return (
-    <footer className="bg-secondary py-16">
+    <footer className="bg-secondary py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-8 md:mb-0">
-            <h2 className="text-3xl font-bold font-serif text-foreground">SorrshaTech</h2>
-            <p className="text-secondary-foreground mt-3 text-lg">Engineering Tomorrow's Solutions</p>
+            <h2 className="text-2xl font-bold font-serif text-foreground sm:text-3xl">SorrshaTech</h2>
+            <p className="text-secondary-foreground mt-3 text-base sm:text-lg">Engineering Tomorrow's Solutions</p>
             <p className="text-muted-foreground text-sm mt-2 max-w-md">
               Innovating the future with cutting-edge technology and exceptional software solutions.
             </p>
           </div>
           
-          <div className="flex space-x-8">
+          <div className="flex space-x-6 sm:space-x-8">
             <a 
               href="#" 
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
