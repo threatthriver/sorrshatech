@@ -1,0 +1,15 @@
+services:
+  - type: static_site
+    name: xarnai-nexus-web
+    env: node
+    plan: free # Optional: specify the plan, 'free' is a good default
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
