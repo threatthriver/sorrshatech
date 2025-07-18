@@ -1,15 +1,60 @@
+# Render configuration for SorrshaTech website
+# Reference: https://render.com/docs/static-sites
+
 services:
   - type: static_site
-    name: xarnai-nexus-web
+    name: sorrshatech
     env: node
-    plan: free # Optional: specify the plan, 'free' is a good default
-    buildCommand: npm install && npm run build
+    plan: free
+    buildCommand: |
+      npm install
+      npm run build
     staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
     headers:
       - path: /*
         name: Cache-Control
         value: public, max-age=31536000, immutable
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
     routes:
       - type: rewrite
         source: /*
         destination: /index.html
+
+    # Auto-deploy settings
+    autoDeploy: true
+    branch: main  # Deploy from the main branch
+    
+    # Build environment settings
+    build:
+      nodeVersion: 20
+      installCommand: npm install
+      buildCommand: npm run build
+      
+    # Security headers
+    security:
+      contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+      permissionsPolicy: "camera=(), microphone=(), geolocation=()"
+      
+    # Performance optimizations
+    performance:
+      compression: true
+      brotli: true
+      
+    # Redirects (if any needed)
+    # redirects:
+    #   - source: /old-path
+    #     destination: /new-path
+    #     type: 301

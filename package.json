@@ -1,17 +1,31 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "sorrshatech",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "SorrshaTech - Modern technology solutions",
+  "keywords": ["react", "typescript", "vite", "tailwindcss", "shadcn"],
+  "author": "SorrshaTech Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/threatthriver/sorrshatech.git"
+  },
+  "bugs": {
+    "url": "https://github.com/threatthriver/sorrshatech/issues"
+  },
+  "homepage": "https://sorrshatech.com",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
-    "lint": "eslint .",
+    "build": "tsc && vite build",
+    "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
-    "vercel-build": "node vercel-build.js",
     "start": "vite preview --port $PORT",
-    "deploy": "vercel --prod"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,scss}\"",
+    "vercel-build": "node vercel-build.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

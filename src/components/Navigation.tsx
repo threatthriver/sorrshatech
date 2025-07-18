@@ -164,18 +164,6 @@ export const Navigation = () => {
                     );
                   })}
                 </nav>
-
-                <div className="pt-4 mt-auto border-t border-slate-100">
-                  <Button
-                    onClick={() => {
-                      setIsOpen(false);
-                      navigate("/waitlist");
-                    }}
-                    className="w-full"
-                  >
-                    Join Waitlist
-                  </Button>
-                </div>
               </div>
             </motion.div>
           </motion.div>

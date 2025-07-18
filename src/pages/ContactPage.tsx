@@ -1,73 +1,78 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { toast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { Loader2, Check, X } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+  Loader2,
+} from "lucide-react";
+
+const formSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters."),
+  lastName: z.string().min(2, "Last name must be at least 2 characters."),
+  email: z.string().email("Please enter a valid email address."),
+  subject: z.string().min(5, "Subject must be at least 5 characters."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    subject: "",
-    message: "",
+  const form = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   });
-  const [errors, setErrors] = useState<any>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissionStatus, setSubmissionStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
 
-  const validateForm = () => {
-    const newErrors: any = {};
-
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "Please enter a valid email";
-    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-
-    return newErrors;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setErrors({});
-    setIsSubmitting(true);
-    setSubmissionStatus("idle");
-
+  async function onSubmit(data: FormData) {
     try {
-      // Simulate form submission
+      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmissionStatus("success");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "",
-        message: "",
+      console.log(data);
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
       });
+      form.reset();
     } catch (error) {
-      setSubmissionStatus("error");
-    } finally {
-      setIsSubmitting(false);
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request. Please try again.",
+        variant: "destructive",
+      });
     }
-  };
+  }
 
   return (
     <section id="contact" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
-        <div className="text-center mb-20 px-4" data-aos="fade-up">
+        <motion.div
+          className="text-center mb-20 px-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-4xl font-bold text-slate-900 mb-4">
             Get In Touch
           </h2>
@@ -75,242 +80,171 @@ const ContactPage = () => {
             Interested in collaboration, partnerships, or joining our research
             efforts? We'd love to hear from you.
           </p>
-          <div className="flex justify-center gap-8 text-sm font-medium text-slate-500">
-            <div className="flex items-center">
-              <span className="inline-block w-2 h-2 bg-slate-300 rounded-full mr-2"></span>
-              Collaboration Inquiries
-            </div>
-            <div className="flex items-center">
-              <span className="inline-block w-2 h-2 bg-slate-300 rounded-full mr-2"></span>
-              Research Partnerships
-            </div>
-          </div>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 px-4">
-          {/* Contact Form */}
-          <div data-aos="fade-right" data-aos-delay="100">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="group relative">
-                  <Input
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={(e) => {
-                      setFormData((prev) => ({
-                        ...prev,
-                        firstName: e.target.value,
-                      }));
-                      setErrors((prev) => ({ ...prev, firstName: "" }));
-                    }}
-                    className={`border-2 border-slate-100 hover:border-slate-200 
-                              ${errors.firstName ? "border-red-500" : "focus:border-slate-400"}
-                              bg-white/80 backdrop-blur-sm py-6 px-4 rounded-xl transition-all duration-300 focus:ring-0 focus:ring-offset-0`}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="John" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                  {errors.firstName && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.firstName}
-                    </p>
-                  )}
-                </div>
-                <div className="group relative">
-                  <Input
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={(e) => {
-                      setFormData((prev) => ({
-                        ...prev,
-                        lastName: e.target.value,
-                      }));
-                      setErrors((prev) => ({ ...prev, lastName: "" }));
-                    }}
-                    className={`border-2 border-slate-100 hover:border-slate-200 
-                              ${errors.lastName ? "border-red-500" : "focus:border-slate-400"}
-                              bg-white/80 backdrop-blur-sm py-6 px-4 rounded-xl transition-all duration-300 focus:ring-0 focus:ring-offset-0`}
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Doe" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                  {errors.lastName && (
-                    <p className="text-red-500 text-sm mt-1">
-                      {errors.lastName}
-                    </p>
+                </div>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="john.doe@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
                   )}
-                </div>
-              </div>
-
-              <div className="group relative">
-                <Input
-                  placeholder="Email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => {
-                    setFormData((prev) => ({ ...prev, email: e.target.value }));
-                    setErrors((prev) => ({ ...prev, email: "" }));
-                  }}
-                  className={`border-2 border-slate-100 hover:border-slate-200 
-                            ${errors.email ? "border-red-500" : "focus:border-slate-400"}
-                            bg-white/80 backdrop-blur-sm py-6 px-4 rounded-xl transition-all duration-300 focus:ring-0 focus:ring-offset-0`}
                 />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-                )}
-              </div>
-
-              <div className="group relative">
-                <Input
-                  placeholder="Subject"
-                  value={formData.subject}
-                  onChange={(e) => {
-                    setFormData((prev) => ({
-                      ...prev,
-                      subject: e.target.value,
-                    }));
-                    setErrors((prev) => ({ ...prev, subject: "" }));
-                  }}
-                  className={`border-2 border-slate-100 hover:border-slate-200 
-                            ${errors.subject ? "border-red-500" : "focus:border-slate-400"}
-                            bg-white/80 backdrop-blur-sm py-6 px-4 rounded-xl transition-all duration-300 focus:ring-0 focus:ring-offset-0`}
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subject</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Project Inquiry" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {errors.subject && (
-                  <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
-                )}
-              </div>
-
-              <div className="group relative">
-                <Textarea
-                  rows={5}
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={(e) => {
-                    setFormData((prev) => ({
-                      ...prev,
-                      message: e.target.value,
-                    }));
-                    setErrors((prev) => ({ ...prev, message: "" }));
-                  }}
-                  className={`border-2 border-slate-100 hover:border-slate-200 
-                            ${errors.message ? "border-red-500" : "focus:border-slate-400"}
-                            bg-white/80 backdrop-blur-sm p-4 rounded-xl transition-all duration-300 focus:ring-0 focus:ring-offset-0`}
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Tell us about your project..."
+                          className="min-h-[150px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-                )}
-              </div>
-
-              <Button
-                type="submit"
-                variant="outline"
-                disabled={isSubmitting || Object.keys(errors).length > 0}
-                className={`w-full border-2 border-slate-200 bg-white/80 backdrop-blur-sm 
-                          text-slate-800 hover:bg-white hover:border-slate-300 hover:text-slate-900 
-                          py-6 text-base font-medium rounded-xl transition-all duration-300 hover:shadow-md
-                          ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`}
-              >
-                {submissionStatus === "success" ? (
-                  <Check className="w-5 h-5 mr-2" />
-                ) : isSubmitting ? (
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                ) : (
-                  <span>Send Message</span>
-                )}
-              </Button>
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="space-y-8" data-aos="fade-left" data-aos-delay="200">
-            <div className="relative p-8 bg-white border-2 border-slate-100 rounded-2xl hover:border-slate-200 transition-all duration-300 h-full">
-              <div className="relative">
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                  <span className="bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-                    Contact Information
-                  </span>
-                </h3>
-
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4 text-slate-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <p className="text-sm font-medium text-slate-500">
-                        Email
-                      </p>
-                      <p className="text-base font-medium text-slate-800">
-                        team@xenarcai.com
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4 text-slate-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="ml-4">
-                      <p className="text-sm font-medium text-slate-500">
-                        Location
-                      </p>
-                      <p className="text-base font-medium text-slate-800">
-                        India
-                      </p>
-                    </div>
-                  </div>
+                <div className="text-right">
+                  <Button type="submit" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting && (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    )}
+                    Send Message
+                  </Button>
                 </div>
+              </form>
+            </Form>
+          </motion.div>
 
-                <div className="mt-10">
-                  <h4 className="text-lg font-semibold text-slate-900 mb-4">
-                    Research Partnerships
-                  </h4>
-                  <p className="text-slate-600 leading-relaxed font-medium text-sm">
-                    We actively collaborate with academic institutions, industry
-                    partners, and research organizations worldwide on joint
-                    research projects and initiatives.
-                  </p>
-                </div>
+          <motion.div
+            className="bg-slate-50 p-10 rounded-2xl lg:p-12"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              Contact Information
+            </h3>
+            <p className="text-slate-600 mb-8 font-medium">
+              Have a question or a project in mind? Reach out to us directly.
+            </p>
 
-                {/* Animated bottom border */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+            <div className="space-y-6">
+              <ContactInfoItem
+                icon={<Mail className="h-5 w-5 text-slate-600" />}
+                title="Email"
+                value="contact@sorrshatech.com"
+                href="mailto:contact@sorrshatech.com"
+              />
+              <ContactInfoItem
+                icon={<MapPin className="h-5 w-5 text-slate-600" />}
+                title="Location"
+                value="Silicon Valley, California"
+              />
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-slate-200">
+              <h4 className="font-bold text-slate-800 mb-4">Follow Us</h4>
+              <div className="flex space-x-4">
+                <SocialLink href="https://github.com/threatthriver/sorrshatech" icon={<Github />} />
+                <SocialLink href="#" icon={<Linkedin />} />
+                <SocialLink href="#" icon={<Twitter />} />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+const ContactInfoItem = ({ icon, title, value, href }: { icon: React.ReactNode, title: string, value: string, href?: string }) => (
+  <div className="flex items-start space-x-4">
+    <div className="mt-1 h-8 w-8 flex-shrink-0 rounded-full bg-slate-200 flex items-center justify-center">
+      {icon}
+    </div>
+    <div>
+      <h4 className="font-bold text-slate-800">{title}</h4>
+      {href ? (
+        <a
+          href={href}
+          className="text-slate-600 hover:text-slate-900 transition-colors"
+        >
+          {value}
+        </a>
+      ) : (
+        <p className="text-slate-600">{value}</p>
+      )}
+    </div>
+  </div>
+);
+
+const SocialLink = ({ href, icon }: { href: string, icon: React.ReactNode }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="p-2 rounded-full bg-slate-200 text-slate-600 hover:bg-slate-300 hover:text-slate-900 transition-colors"
+  >
+    {icon}
+  </a>
+);
 
 export default ContactPage;
