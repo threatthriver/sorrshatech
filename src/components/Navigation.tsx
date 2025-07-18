@@ -56,17 +56,13 @@ export const Navigation = () => {
 
   const [scrolled, setScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState('hero');
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      // Dropdown logic removed; no longer needed.
-      // if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      //   setOpenDropdown(null);
-      // }
+    function handleClickOutside() {
+      // Dropdown logic removed; no longer needed
     }
 
     document.addEventListener('mousedown', handleClickOutside);

@@ -1,13 +1,12 @@
-
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-16">
+    <footer className="bg-gradient-to-b from-white to-gray-50 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-8 md:mb-0">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">SorrshaTech</h2>
-            <p className="text-gray-300 mt-3 text-lg">Engineering Tomorrow's Solutions</p>
-            <p className="text-gray-400 text-sm mt-2 max-w-md">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">SorrshaTech</h2>
+            <p className="text-gray-600 mt-3 text-lg">Engineering Tomorrow's Solutions</p>
+            <p className="text-gray-500 text-sm mt-2 max-w-md">
               Innovating the future with cutting-edge technology and exceptional software solutions.
             </p>
           </div>
@@ -15,7 +14,7 @@ const Footer = () => {
           <div className="flex space-x-8">
             <a 
               href="#" 
-              className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:-translate-y-1"
+              className="text-gray-500 hover:text-gray-900 transition-colors duration-300"
               aria-label="GitHub"
             >
               <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -24,7 +23,7 @@ const Footer = () => {
             </a>
             <a 
               href="#" 
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300 transform hover:-translate-y-1"
+              className="text-gray-500 hover:text-blue-500 transition-colors duration-300"
               aria-label="Twitter"
             >
               <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -33,7 +32,7 @@ const Footer = () => {
             </a>
             <a 
               href="#" 
-              className="text-gray-400 hover:text-blue-500 transition-colors duration-300 transform hover:-translate-y-1"
+              className="text-gray-500 hover:text-blue-600 transition-colors duration-300"
               aria-label="LinkedIn"
             >
               <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -43,11 +42,11 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-gray-800">
-          <p className="text-center text-gray-400 text-sm">
+        <div className="mt-16 pt-8 border-t border-gray-200">
+          <p className="text-center text-gray-500 text-sm">
             &copy; {new Date().getFullYear()} SorrshaTech. All rights reserved.
-            <span className="block mt-2 text-xs text-gray-500">
-              Built with ❤️ for a better digital future
+            <span className="block mt-2 text-xs text-gray-400">
+              Building a better digital future
             </span>
           </p>
         </div>
