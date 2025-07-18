@@ -1,19 +1,27 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, Variants } from 'framer-motion';
+import { Linkedin, Twitter, Github } from 'lucide-react';
 
 const teamMembers = [
   {
     name: 'Sohan Sharma',
     role: 'Founder & CEO',
-    bio: 'The visionary behind SorrshaTech, driving innovation and leading the team towards a future of technological excellence.',
+    bio: 'Sohan Sharma is the visionary founder and CEO of SorrshaTech. With a profound passion for leveraging technology to solve real-world problems, he leads the company\'s strategic direction and fosters a culture of innovation. His leadership is instrumental in driving the team towards a future of technological excellence and groundbreaking solutions.',
     imageUrl: 'https://placehold.co/400x400/6366f1/white?text=SS',
+    socials: [
+      { name: 'LinkedIn', href: '#', icon: Linkedin },
+      { name: 'Twitter', href: '#', icon: Twitter },
+    ],
   },
   {
     name: 'Jane Doe',
     role: 'Chief Operating Officer',
     bio: 'A strategic leader ensuring operational excellence and driving the company’s growth and success.',
     imageUrl: 'https://placehold.co/400x400/ec4899/white?text=JD',
+    socials: [
+      { name: 'LinkedIn', href: '#', icon: Linkedin },
+    ],
   },
 ];
 
@@ -23,12 +31,19 @@ const emergingTalents = [
     role: 'Lead Software Engineer',
     bio: 'A talented engineer with a passion for building scalable and robust software solutions.',
     imageUrl: 'https://placehold.co/400x400/22c55e/white?text=PR',
+    socials: [
+      { name: 'GitHub', href: '#', icon: Github },
+      { name: 'LinkedIn', href: '#', icon: Linkedin },
+    ],
   },
   {
     name: 'Aniket Kumar',
     role: 'Product Designer',
     bio: 'Creative mind shaping user-centric products with an eye for detail and a passion for great design.',
     imageUrl: 'https://placehold.co/400x400/f97316/white?text=AK',
+    socials: [
+      { name: 'LinkedIn', href: '#', icon: Linkedin },
+    ],
   },
 ];
 
@@ -54,8 +69,26 @@ const TeamMemberCard = ({ member }) => (
         <p className="text-indigo-200 font-medium">{member.role}</p>
       </div>
     </div>
-    <div className="p-6">
-      <p className="text-slate-600 font-light leading-relaxed">{member.bio}</p>
+    <div className="p-6 flex flex-col flex-grow">
+      <p className="text-slate-600 font-light leading-relaxed flex-grow">{member.bio}</p>
+      {member.socials && (
+        <div className="mt-6 pt-4 border-t border-slate-100">
+          <div className="flex items-center space-x-4">
+            {member.socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-slate-600 transition-colors"
+                aria-label={social.name}
+              >
+                <social.icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </motion.div>
 );
@@ -95,16 +128,28 @@ const CompaniesPage = () => {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-20"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-          >
-            {teamMembers.map((member) => (
-              <TeamMemberCard key={member.name} member={member} />
-            ))}
+          <motion.div className="mb-20">
+            <motion.h2 
+              className="text-4xl text-slate-900 mb-12 text-center"
+              style={{ fontFamily: '"Playfair Display", serif', fontWeight: 400 }}
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, amount: 0.5 }}
+              variants={cardVariants}
+            >
+              Leadership
+            </motion.h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+            >
+              {teamMembers.map((member) => (
+                <TeamMemberCard key={member.name} member={member} />
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.div

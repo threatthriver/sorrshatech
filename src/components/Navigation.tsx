@@ -53,11 +53,11 @@ export const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a
-            href="#"
+            href="/"
             className="flex-shrink-0 group"
             onClick={(e) => {
               e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              handleNavigate('/');
             }}
           >
             <span className="text-2xl font-bold text-slate-900 tracking-tight group-hover:opacity-80 transition-opacity duration-200">SorrshaTech</span>

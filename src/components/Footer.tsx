@@ -45,7 +45,6 @@ export const Footer = () => {
           </div>
 
           <FooterLinkColumn title="Company" links={footerLinks.company} />
-          <FooterLinkColumn title="Legal" links={footerLinks.legal} />
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center">

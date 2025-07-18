@@ -8,8 +8,8 @@ const projects = [
     name: 'SorrshaBuy',
     description: 'Your premier e-commerce destination for quality products and seamless shopping experiences.',
     link: 'https://sorrshabuy.com',
-    logo: <span className="text-white text-3xl font-bold tracking-wider">SorrshaBuy</span>,
-    bgColor: 'bg-blue-600',
+    logo: <img src="/BCO-removebg-preview.png" alt="SorrshaBuy Logo" className="h-32 w-auto object-contain" />,
+    bgColor: 'bg-white',
   },
   {
     name: 'New Venture',
