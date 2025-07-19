@@ -2,6 +2,9 @@
 
 Modern, responsive website for SorrshaTech with waitlist functionality.
 
+<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/a8fc5e0d-2ba9-4f9e-bd13-f1225d22f269" />
+
+
 ## Features
 
 - Responsive navigation with smooth scrolling
